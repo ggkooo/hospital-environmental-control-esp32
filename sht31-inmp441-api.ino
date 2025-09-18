@@ -17,7 +17,8 @@ const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = -10800;
 const int daylightOffset_sec = 0;
 
-const char* apiEndpoint = "http://192.168.15.9:8080";
+const char* apiEndpoint = "http://200.132.194.54:8080/api/";
+const char* apiKey = "qCYQuenTcPZZM5B98NXybSzw2GfVb0FL";
 
 Adafruit_SHT31 sht31 = Adafruit_SHT31();
 
@@ -187,6 +188,7 @@ void sendDataToAPI() {
 
     http.begin(apiEndpoint);
     http.addHeader("Content-Type", "application/json");
+    http.addHeader("X-API-KEY", apiKey);
 
     int httpResponseCode = http.POST(payload);
 
