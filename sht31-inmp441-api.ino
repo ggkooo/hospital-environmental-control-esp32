@@ -156,8 +156,9 @@ void loop() {
     float noise_level_dB = 20 * log10(peak_amplitude / 32768.0) + 94;
 
     char timestamp_buffer[20];
-    strftime(timestamp_buffer, sizeof(timestamp_buffer), "%d-%m-%y %H:%M:%S", &timeinfo);
+    strftime(timestamp_buffer, sizeof(timestamp_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
     String formattedTimestamp = String(timestamp_buffer);
+
 
     String jsonString = "{";
     jsonString += "\"temperature\": " + String(t, 2) + ",";
