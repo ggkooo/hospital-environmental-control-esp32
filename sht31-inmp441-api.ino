@@ -59,17 +59,18 @@ void setup() {
 
   WiFiManager wm;
 
-  unsigned long previousMillis = 0;
-  const long blinkInterval = 500;
+  // 👇 ALTERAÇÃO AQUI
+  // Força o reset das credenciais salvas e inicia o portal de configuração
+  wm.resetSettings(); 
+  
+  // A linha abaixo substitui o loop de autoConnect
+  bool res = wm.startConfigPortal("Giordano's ESP32", "12345678");
 
-  while (WiFi.status() != WL_CONNECTED) {
-    unsigned long currentMillis = millis();
-    if (currentMillis - previousMillis >= blinkInterval) {
-      previousMillis = currentMillis;
-      digitalWrite(LED_VERDE, !digitalRead(LED_VERDE));
-    }
-    wm.autoConnect("Giordano's ESP32", "12345678");
+  if (!res) {
+    Serial.println("Falha ao se conectar. Reiniciando...");
+    ESP.restart();
   }
+  // 👆 FIM DA ALTERAÇÃO
 
   digitalWrite(LED_VERDE, HIGH);
   Serial.println("\nConectado à rede Wi-Fi!");
