@@ -41,19 +41,6 @@ Welcome! This repository contains a collection of ESP32-based projects for captu
   ]
   ```
 
-### 🌡️🔊📡 Environmental Logger & Web Server
-- **Sensors:** SHT31, INMP441
-- **Features:** Logs data in JSON to SPIFFS, serves via web server, HTML interface
-- **Example Output (log.json):**
-  ```json
-  {
-    "temperature": 23.45,
-    "humidity": 45.67,
-    "noise": 56.23,
-    "timestamp": "17-09-25 09:20:15"
-  }
-  ```
-
 ### 🌡️🔊 Environmental Monitor with OLED
 - **Sensors:** SHT31, INMP441
 - **Display:** SSD1306 OLED
